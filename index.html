@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Assets/CSS/style.css" />
+    <title>Ed's Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="header">
+        <h3>Ed's Weather Dashboard</h3>
+        <!-- <h4><span id="time-display"></span></h4> -->
+    </header>
+
+    <img src="Assets/Images/clouds.jpg" alt="Clouds" style="width:100%;">
+    
+    <aside>
+        <header class="header">
+            <h3>Search for a city:</h3>
+        </header>
+        <input type="text" name="cityName" id="cityName" placeholder="Enter city name here..." />
+        <button id="searchBtn" class="searchBtn">Search</button> </br> </br>
+        <button class="stockCities" id=Austin>Austin</button> </br>
+        <button class="stockCities" id=Boston>Boston</button> </br>
+        <button class="stockCities" id=Chicago>Chicago</button> </br>
+        <button class="stockCities" id=Denver>Denver</button> </br>
+        <button class="stockCities" id=NewYork>New York</button> </br>
+        <button class="stockCities" id=Portland>Portland</button> </br>
+        <button class="stockCities" id=Savanah>Savanah</button> </br>
+        <button class="stockCities" id=SanFrancisco>San Francisco</button> </br>
+    </aside>
+
+    <div class=display>
+        <header class="header2">
+            <h3><span>The weather in </span><span id="cityNameDisplay"></span><span> on </span><span id="date-display"></span><span> is...</span></h3>
+        </header>
+        <header class="header3">
+            <h4><span>The current temperature is: </span><span id="tempDisplay"></span></h4>
+        </header>
+        <header class="header3">
+            <h4><span>The current humidity is: </span><span id="humidityDisplay"></span></h4>
+        </header>
+        <header class="header3">
+            <h4><span>The current wind speed is: </span><span id="tempDisplay"></span></h4>
+        </header>
+        <header class="header3">
+            <h4><span>The current UV index is: </span><span id="tempDisplay"></span></h4>
+        </header>
+    </div>
+
+    <div class=display>
+        <header class="header2">
+            <h3>5-Day Forecast:</h3>
+        </header>
+        <div class="row" id=row>
+            <div class="box">
+                <span id="date-display1"></span>
+                <img>
+            </br>
+            <h5><span>Temp: </span><span id="tempDisplay1"></span></h5>
+            </br>
+            <h5><span>Humidity: </span><span id="humidityDisplay1"></span></h5>
+            </div>
+            <div class="box">
+                <span id="date-display2"></span>
+                <img>
+            </br>
+            <h5><span>Temp: </span><span id="tempDisplay2"></span></h5>
+            </br>
+            <h5><span>Humidity: </span><span id="humidityDisplay2"></span></h5>
+            </div>
+            <div class="box">
+                <span id="date-display3"></span>
+                <img>
+            </br>
+            <h5><span>Temp: </span><span id="tempDisplay3"></span></h5>
+            </br>
+            <h5><span>Humidity: </span><span id="humidityDisplay3"></span></h5>
+            </div>
+            <div class="box">
+                <span id="date-display4"></span>
+                <img>
+            </br>
+            <h5><span>Temp: </span><span id="tempDisplay4"></span></h5>
+            </br>
+            <h5><span>Humidity: </span><span id="humidityDisplay4"></span></h5>
+            </div>
+            <div class="box">
+                <span id="date-display5"></span>
+                <img>
+            </br>
+            <h5><span>Temp: </span><span id="tempDisplay5"></span></h5>
+            </br>
+            <h5><span>Humidity: </span><span id="humidityDisplay5"></span></h5>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</br></br></br></br></br></br></br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="Assets/JS/script.js"></script>
+</body>
+</html>
