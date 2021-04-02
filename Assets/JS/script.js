@@ -6,20 +6,26 @@ var dateDisplayEl3 = $('#date-display3');
 var dateDisplayEl4 = $('#date-display4');
 var dateDisplayEl5 = $('#date-display5');
 
-// local storage var
-var localCityName = localStorage.getItem("cityName"); 
+// button var
 var searchBtn = document.querySelector("#searchBtn");
-var austinBtn = document.querySelector("#Austin");
-var bostonBtn = document.querySelector("#Boston");
-var chicagoBtn = document.querySelector("#Chicago");
-var denverBtn = document.querySelector("#Denver");
-var newYorkBtn = document.querySelector("#NewYork");
-var portlandBtn = document.querySelector("#Portland");
-var savanahBtn = document.querySelector("#Savanah");
-var sanFranciscoBtn = document.querySelector("#SanFrancisco");
-var cityNameDisplay = document.querySelector("#cityNameDisplay");
-var cityName = document.querySelector("#cityName");
+var clearBtn = document.querySelector("#clearBtn");
+var city1 = document.querySelector("#city1");
 
+// local storage var
+var cityNameDisplay0 = document.querySelector("#cityNameDisplay0");
+var cityNameDisplay1 = document.querySelector("#cityNameDisplay1");
+var cityNameDisplay2 = document.querySelector("#cityNameDisplay2");
+var cityNameDisplay3 = document.querySelector("#cityNameDisplay3");
+var cityNameDisplay4 = document.querySelector("#cityNameDisplay4");
+var cityNameDisplay5 = document.querySelector("#cityNameDisplay5");
+var cityNameDisplay6 = document.querySelector("#cityNameDisplay6");
+var cityNameDisplay7 = document.querySelector("#cityNameDisplay7");
+
+var cityInput = document.querySelector("#city-text");
+var cityList = document.querySelector("#city-list");
+var cityCountSpan = document.querySelector("#city-count");
+
+var cities = [];
 
 // date displays
 function displayDate() {
@@ -37,70 +43,156 @@ function displayDate() {
     dateDisplayEl5.text(today5);
   }
 setInterval(displayDate, 1000);
+  
+// This function is being called below and will run when the page loads.
+function init() {
+    // Get stored cities from localStorage
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+    // If cities were retrieved from localStorage, update the cities array to it
+    if (storedCities !== null) {
+      cities = storedCities;
+    }
+  }
+function storeCities() {
+    // Stringify and set key in localStorage to cities array
+    localStorage.setItem("cities", JSON.stringify(cities));
+  }
+init()
+
+// render all searched cities
+if (cities[cities.length-1] != null) {
+  cityNameDisplay0.textContent = cities[cities.length-1];
+  cityNameDisplay1.textContent = cities[cities.length-2];
+  cityNameDisplay2.textContent = cities[cities.length-3];
+  cityNameDisplay3.textContent = cities[cities.length-4];
+  cityNameDisplay4.textContent = cities[cities.length-5];
+  cityNameDisplay5.textContent = cities[cities.length-6];
+  cityNameDisplay6.textContent = cities[cities.length-7];
+  cityNameDisplay7.textContent = cities[cities.length-8];
+} else {cityNameDisplay0.textContent = "...";}
 
 // BUTTONS
 // save and then display searched city
-if (localCityName != null) {
-  cityNameDisplay.textContent = localCityName;
-} else {cityNameDisplay.textContent = "...";}
-
 searchBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    if (cityName === "") {
+    event.preventDefault();
+    var cityText = cityInput.value.trim();
+    // Return from function early if submitted cityText is blank
+    if (cityText === "") {
       alert("Enter SOMETHING!");
       return;
     }
-    localStorage.setItem("cityName", cityName);
-    cityNameDisplay.textContent = cityName;
+    // Add new cityText to cities array
+    cities.push(cityText);
+    cityInput.value = "";
+    // Store updated cities in localStorage, re-render the list, 
+    // refresh page to display item
+    storeCities();
     location.reload();
-  });
+});
+// clear just the searched cities from local storage
+clearBtn.addEventListener("click", function(event) {  
+    localStorage.removeItem('cities');
+    location.reload();
+});  
 
-austinBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Austin");
+
+// search old cities from local storage  
+city1.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-2]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
-bostonBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Boston");
+city2.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-3]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
-chicagoBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Chicago");
+city3.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-4]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
-denverBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Denver");
-    location.reload();
-});
-
-newYorkBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "New York");
+city4.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-5]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
 
-portlandBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Portland");
+city5.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-6]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
-savanahBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "Savanah");
+city6.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-7]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
 
-sanFranciscoBtn.addEventListener("click", function(event) {  
-    var cityName = document.querySelector("#cityName").value.trim();
-    localStorage.setItem("cityName", "San Francisco");
+city7.addEventListener("click", function(event) {  
+    cities.push(cities[cities.length-8]);
+    cityInput.value = "";
+    storeCities();
     location.reload();
 });
+
+
+
+
+
+
+
+
+// city1.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "Boston");
+//     location.reload();
+// });
+
+// city2.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "Chicago");
+//     location.reload();
+// });
+
+// city3.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "Denver");
+//     location.reload();
+// });
+
+// city4.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "New York");
+//     location.reload();
+// });
+
+
+// city5.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "Portland");
+//     location.reload();
+// });
+
+// city6.addEventListener("click", function(event) {  
+//     var cityName = document.querySelector("#cityName").value.trim();
+//     localStorage.setItem("cityName", "Savanah");
+//     location.reload();
+// });
+
+// clear.addEventListener("click", function(event) {  
+//     localStorage.clear()
+//     location.reload();
+// });
 

@@ -28,27 +28,26 @@
         <!-- <h4><span id="time-display"></span></h4> -->
     </header>
 
-    <img src="Assets/Images/clouds.jpg" alt="Clouds" style="width:100%;">
-    
     <aside>
         <header class="header">
             <h3>Search for a city:</h3>
         </header>
-        <input type="text" name="cityName" id="cityName" placeholder="Enter city name here..." />
-        <button id="searchBtn" class="searchBtn">Search</button> </br> </br>
-        <button class="stockCities" id=Austin>Austin</button> </br>
-        <button class="stockCities" id=Boston>Boston</button> </br>
-        <button class="stockCities" id=Chicago>Chicago</button> </br>
-        <button class="stockCities" id=Denver>Denver</button> </br>
-        <button class="stockCities" id=NewYork>New York</button> </br>
-        <button class="stockCities" id=Portland>Portland</button> </br>
-        <button class="stockCities" id=Savanah>Savanah</button> </br>
-        <button class="stockCities" id=SanFrancisco>San Francisco</button> </br>
+            <input type="text" name="city-text" id="city-text" placeholder="Enter city name here..." />
+            <button id="searchBtn" class="searchBtn">Search</button> </br> </br>
+        <ul id="city-list"></ul>
+        <button class="stockCities" id=city1><span id="cityNameDisplay1"></span></button> </br>
+        <button class="stockCities" id=city2><span id="cityNameDisplay2"></span></button> </br>
+        <button class="stockCities" id=city3><span id="cityNameDisplay3"></span></button> </br>
+        <button class="stockCities" id=city4><span id="cityNameDisplay4"></span></button> </br>
+        <button class="stockCities" id=city5><span id="cityNameDisplay5"></span></button> </br>
+        <button class="stockCities" id=city6><span id="cityNameDisplay6"></span></button> </br>
+        <button class="stockCities" id=city7><span id="cityNameDisplay7"></span></button> </br>
+        <button class="clearBtn" id=clearBtn>Clear search history</button> </br>
     </aside>
 
     <div class=display>
         <header class="header2">
-            <h3><span>The weather in </span><span id="cityNameDisplay"></span><span> on </span><span id="date-display"></span><span> is...</span></h3>
+            <h3><span>The weather in </span><strong><span id="cityNameDisplay0"></strong></span><span> on </span><span id="date-display"></span><span> is...</span></h3>
         </header>
         <header class="header3">
             <h4><span>The current temperature is: </span><span id="tempDisplay"></span></h4>
@@ -112,11 +111,7 @@
         </div>
     </div>
 
-
-
-
-
-</br></br></br></br></br></br></br>
+    <img src="Assets/Images/clouds.jpg" alt="Clouds" style="width:100%;">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
