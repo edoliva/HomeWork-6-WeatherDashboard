@@ -91,9 +91,9 @@ border-radius: 15px;
 
 .header2 {
     text-align: left;
-    background-color:rgb(199, 94, 24);
+    background-color:rgb(240, 164, 114);
     color: black;
-    border-radius: 5px;
+    border-radius: 30px;
     margin: 10px;
     border: 1px solid rgb(7, 0, 0);
     justify-content: center;
@@ -106,7 +106,7 @@ border-radius: 15px;
 .header3 {
     text-align: left;
     background-color:rgb(199, 94, 24);
-    color: rgb(10, 20, 168);
+    color: rgb(4, 11, 105);
     border-radius: 5px;
     margin: 10px;
     margin-left: 35px;
@@ -120,7 +120,7 @@ border-radius: 15px;
 }
 
 .box {
-    text-align: left;
+    text-align: center;
     background-color: wheat;
     color: rgb(10, 20, 168);
     border-radius: 15px;
@@ -135,5 +135,10 @@ border-radius: 15px;
     padding-right: 10px;
     padding-top: 3px;
     font-weight: bold;
-    font-size: x-large;
+    font-size: large;
+  }
+
+  h5 {
+      font-size: medium;
+      text-align: left;
   }

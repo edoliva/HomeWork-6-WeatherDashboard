@@ -27,6 +27,28 @@ var cityCountSpan = document.querySelector("#city-count");
 
 var cities = [];
 
+// weather data var
+var cityList =$("#city-list");
+var key = "a6b8c63eda6b4f13328e823d255efd7d";
+
+var tempDisplay0 = document.querySelector("#tempDisplay0");
+var tempDisplay1 = document.querySelector("#tempDisplay1");
+var tempDisplay2 = document.querySelector("#tempDisplay2");
+var tempDisplay3 = document.querySelector("#tempDisplay3");
+var tempDisplay4 = document.querySelector("#tempDisplay4");
+var tempDisplay5 = document.querySelector("#tempDisplay5");
+
+var humidityDisplay0 = document.querySelector("#humidityDisplay0");
+var humidityDisplay1 = document.querySelector("#humidityDisplay1");
+var humidityDisplay2 = document.querySelector("#humidityDisplay2");
+var humidityDisplay3 = document.querySelector("#humidityDisplay3");
+var humidityDisplay4 = document.querySelector("#humidityDisplay4");
+var humidityDisplay5 = document.querySelector("#humidityDisplay5");
+
+var windDisplay0 = document.querySelector("#windDisplay0");
+var uvDisplay0 = document.querySelector("#uvDisplay0");
+
+
 // date displays
 function displayDate() {
     var today = moment().add(0,'days').format('MM/DD/YYYY');
@@ -147,52 +169,83 @@ city7.addEventListener("click", function(event) {
     location.reload();
 });
 
+// CURRENT weather
+// get then display weather data
+var cityName = cities[cities.length-1];
+var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+key;
 
+fetch(weatherURL)
+    .then(response => response.json())
+    .then(data =>  {
+        console.log(data);
+        var cityNameDisplayValue = data['name'];
+        var tempDisplayValue0 = parseInt((data['main']['temp'])*9/5-459);
+        var humidityDisplayValue0 = data['main']['humidity'];
+        var windDisplayValue0 = data['wind']['speed'];
+        var iconDisplay0 = data['weather']['0']['icon'];
+        // var uvDisplayValue0 = data['main']['humidity'];
 
+        cityNameDisplay0.innerHTML = cityNameDisplayValue;
+        tempDisplay0.innerHTML = tempDisplayValue0+"°F";
+        humidityDisplay0.innerHTML = humidityDisplayValue0+"%";
+        windDisplay0.innerHTML = windDisplayValue0+" m.p.h.";
 
+        // console.log(iconDisplay0);
+        $(".image0").attr("src","http://openweathermap.org/img/wn/"+iconDisplay0+"@2x.png");
+    })
+// .catch(err => alert("Invalid entry, try again"))
 
+//5 DAY FORECAST
+var fiveDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid="+key;
 
+fetch(fiveDayWeatherURL)
+    .then(response => response.json())
+    .then(data =>  {
+        console.log(data);
+        var tempDisplayValue1 = parseInt((data['list']['6']['main']['temp'])*9/5-459);
+        var tempDisplayValue2 = parseInt((data['list']['14']['main']['temp'])*9/5-459);
+        var tempDisplayValue3 = parseInt((data['list']['22']['main']['temp'])*9/5-459);
+        var tempDisplayValue4 = parseInt((data['list']['30']['main']['temp'])*9/5-459);
+        var tempDisplayValue5 = parseInt((data['list']['38']['main']['temp'])*9/5-459);
 
+        var humidityDisplayValue1 = data['list']['6']['main']['humidity'];
+        var humidityDisplayValue2 = data['list']['14']['main']['humidity'];
+        var humidityDisplayValue3 = data['list']['22']['main']['humidity'];
+        var humidityDisplayValue4 = data['list']['30']['main']['humidity'];
+        var humidityDisplayValue5 = data['list']['38']['main']['humidity'];
 
-// city1.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "Boston");
-//     location.reload();
-// });
+        var iconDisplay1 = data['list']['6']['weather']['0']['icon'];
+        var iconDisplay2 = data['list']['14']['weather']['0']['icon'];
+        var iconDisplay3 = data['list']['22']['weather']['0']['icon'];
+        var iconDisplay4 = data['list']['30']['weather']['0']['icon'];
+        var iconDisplay5 = data['list']['38']['weather']['0']['icon'];
 
-// city2.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "Chicago");
-//     location.reload();
-// });
+        tempDisplay1.innerHTML = tempDisplayValue1+"°F";
+        tempDisplay2.innerHTML = tempDisplayValue2+"°F";
+        tempDisplay3.innerHTML = tempDisplayValue3+"°F";
+        tempDisplay4.innerHTML = tempDisplayValue4+"°F";
+        tempDisplay5.innerHTML = tempDisplayValue5+"°F";
 
-// city3.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "Denver");
-//     location.reload();
-// });
+        humidityDisplay1.innerHTML = humidityDisplayValue1+"%";
+        humidityDisplay2.innerHTML = humidityDisplayValue2+"%";
+        humidityDisplay3.innerHTML = humidityDisplayValue3+"%";
+        humidityDisplay4.innerHTML = humidityDisplayValue4+"%";
+        humidityDisplay5.innerHTML = humidityDisplayValue5+"%";
 
-// city4.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "New York");
-//     location.reload();
-// });
+        $(".image1").attr("src","http://openweathermap.org/img/wn/"+iconDisplay1+"@2x.png");
+        $(".image2").attr("src","http://openweathermap.org/img/wn/"+iconDisplay2+"@2x.png");
+        $(".image3").attr("src","http://openweathermap.org/img/wn/"+iconDisplay3+"@2x.png");
+        $(".image4").attr("src","http://openweathermap.org/img/wn/"+iconDisplay4+"@2x.png");
+        $(".image5").attr("src","http://openweathermap.org/img/wn/"+iconDisplay5+"@2x.png");
+    })
 
+//UV index 
+var uvURL = "https://api.openweathermap.org/data/2.5/onecall?q="+cityName+"exclude=minutely,hourly,daily,alerts&appid="+key;
 
-// city5.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "Portland");
-//     location.reload();
-// });
-
-// city6.addEventListener("click", function(event) {  
-//     var cityName = document.querySelector("#cityName").value.trim();
-//     localStorage.setItem("cityName", "Savanah");
-//     location.reload();
-// });
-
-// clear.addEventListener("click", function(event) {  
-//     localStorage.clear()
-//     location.reload();
-// });
-
+fetch(uvURL)
+    .then(response => response.json())
+    .then(data =>  {
+        console.log(data);
+        // var uvDisplayValue0 = data['list']['6']['main']['humidity'];
+        // uvDisplay0.innerHTML = uvDisplayValue0;
+    })
