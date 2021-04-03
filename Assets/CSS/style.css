@@ -46,20 +46,36 @@ input {
     width: fit-content;
   }
 
+.yourSearches {
+    border: 1px solid rgb(7, 0, 0);
+    width: 80%;
+    height: 40px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: large;
+    font-weight: bold;
+    background-color:wheat;
+    border-radius: 15px;
+}
+  
 .stockCities {
-border: 1px solid rgb(7, 0, 0);
-width: 80%;
-height: 40px;
-margin: 0 auto;
-text-align: left;
-padding: 5px;
-display: flex;
-justify-content: center;
-align-items:center;
-font-size: large;
-font-weight: bold;
-background-color:rgb(199, 94, 24);
-border-radius: 15px;
+    border: 1px solid rgb(7, 0, 0);
+    width: 80%;
+    height: 40px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size: large;
+    font-weight: bold;
+    background-color:rgb(199, 94, 24);
+    border-radius: 15px;
 }
 
 .clearBtn {
@@ -104,6 +120,22 @@ border-radius: 15px;
 }
 
 .header3 {
+    text-align: left;
+    background-color:wheat;
+    color: rgb(4, 11, 105);
+    border-radius: 5px;
+    margin: 10px;
+    margin-left: 35px;
+    border: 1px solid rgb(7, 0, 0);
+    justify-content: center;
+    align-items:center;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+}
+
+.header3uv {
     text-align: left;
     background-color:rgb(199, 94, 24);
     color: rgb(4, 11, 105);

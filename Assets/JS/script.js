@@ -24,11 +24,9 @@ var cityNameDisplay7 = document.querySelector("#cityNameDisplay7");
 var cityInput = document.querySelector("#city-text");
 var cityList = document.querySelector("#city-list");
 var cityCountSpan = document.querySelector("#city-count");
-
 var cities = [];
 
 // weather data var
-var cityList =$("#city-list");
 var key = "a6b8c63eda6b4f13328e823d255efd7d";
 
 var tempDisplay0 = document.querySelector("#tempDisplay0");
@@ -93,6 +91,7 @@ if (cities[cities.length-1] != null) {
   cityNameDisplay7.textContent = cities[cities.length-8];
 } else {cityNameDisplay0.textContent = "...";}
 
+
 // BUTTONS
 // save and then display searched city
 searchBtn.addEventListener("click", function(event) {  
@@ -118,7 +117,7 @@ clearBtn.addEventListener("click", function(event) {
 });  
 
 
-// search old cities from local storage  
+// search old cities from local storage, enable buttons  
 city1.addEventListener("click", function(event) {  
     cities.push(cities[cities.length-2]);
     cityInput.value = "";
@@ -147,7 +146,6 @@ city4.addEventListener("click", function(event) {
     location.reload();
 });
 
-
 city5.addEventListener("click", function(event) {  
     cities.push(cities[cities.length-6]);
     cityInput.value = "";
@@ -169,8 +167,9 @@ city7.addEventListener("click", function(event) {
     location.reload();
 });
 
+
 // CURRENT weather
-// get then display weather data
+// get, then display, weather data
 var cityName = cities[cities.length-1];
 var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+key;
 
@@ -183,17 +182,41 @@ fetch(weatherURL)
         var humidityDisplayValue0 = data['main']['humidity'];
         var windDisplayValue0 = data['wind']['speed'];
         var iconDisplay0 = data['weather']['0']['icon'];
-        // var uvDisplayValue0 = data['main']['humidity'];
+        var lon = data['coord']['lon'];
+        var lat = data['coord']['lat'];
+
 
         cityNameDisplay0.innerHTML = cityNameDisplayValue;
         tempDisplay0.innerHTML = tempDisplayValue0+"°F";
         humidityDisplay0.innerHTML = humidityDisplayValue0+"%";
         windDisplay0.innerHTML = windDisplayValue0+" m.p.h.";
 
+        // UV index 
+        var uvURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely,hourly,daily,alerts&appid="+key;
+
+        fetch(uvURL)
+            .then(response => response.json())
+            .then(data =>  {
+                console.log(data);
+                var uvDisplayValue0 = data['current']['uvi'];
+                uvDisplay0.innerHTML = uvDisplayValue0;
+        // UV color scale
+        var uvBox = document.querySelector(".header3uv"); 
+        if (uvDisplayValue0 <= 2) {
+            uvBox.setAttribute("style", "background-color: #3EA72D;");
+        } else if (uvDisplayValue0 <= 5) {
+            uvBox.setAttribute("style", "background-color: #FFF300;");
+        } else if (uvDisplayValue0 <= 7) {
+            uvBox.setAttribute("style", "background-color: #F18B00;");
+        } else if (uvDisplayValue0 <= 10) {
+            uvBox.setAttribute("style", "background-color: #E53210;");
+        } else { uvBox.setAttribute("style", "background-color: #B567A4;")
+        }
+        })
         // console.log(iconDisplay0);
         $(".image0").attr("src","http://openweathermap.org/img/wn/"+iconDisplay0+"@2x.png");
     })
-// .catch(err => alert("Invalid entry, try again"))
+
 
 //5 DAY FORECAST
 var fiveDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid="+key;
@@ -239,13 +262,6 @@ fetch(fiveDayWeatherURL)
         $(".image5").attr("src","http://openweathermap.org/img/wn/"+iconDisplay5+"@2x.png");
     })
 
-//UV index 
-var uvURL = "https://api.openweathermap.org/data/2.5/onecall?q="+cityName+"exclude=minutely,hourly,daily,alerts&appid="+key;
 
-fetch(uvURL)
-    .then(response => response.json())
-    .then(data =>  {
-        console.log(data);
-        // var uvDisplayValue0 = data['list']['6']['main']['humidity'];
-        // uvDisplay0.innerHTML = uvDisplayValue0;
-    })
+ 
+// .catch(err => alert("Invalid city entry, try again."))
