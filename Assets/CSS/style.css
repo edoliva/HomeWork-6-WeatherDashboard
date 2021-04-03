@@ -22,7 +22,7 @@ h3 {
 aside {
     width: 25%;
     border: 1px solid rgb(7, 0, 0);
-    display: inline-block;
+    /* display: inline-block; */
     text-align: center;
     margin: 10px;
     float: left;
@@ -40,7 +40,7 @@ input {
 .searchBtn {
     border-left: 1px solid black;
     border-radius: 15px;
-    background-color: #9b0909;
+    background-color: #e7dcdc;
     color: white;
     height: 30px;
     width: fit-content;
@@ -98,7 +98,7 @@ input {
     width: 70%;
     height: fit-content;
     border: 1px solid rgb(7, 0, 0);
-    display: inline-block;
+    /* display: inline-block; */
     text-align: left;
     margin: 10px;
     float:right;

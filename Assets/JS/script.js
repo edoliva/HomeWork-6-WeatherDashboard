@@ -193,7 +193,6 @@ fetch(weatherURL)
 
         // UV index 
         var uvURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely,hourly,daily,alerts&appid="+key;
-
         fetch(uvURL)
             .then(response => response.json())
             .then(data =>  {
@@ -213,55 +212,54 @@ fetch(weatherURL)
         } else { uvBox.setAttribute("style", "background-color: #B567A4;")
         }
         })
-        // console.log(iconDisplay0);
+        // current weather icon
         $(".image0").attr("src","http://openweathermap.org/img/wn/"+iconDisplay0+"@2x.png");
-    })
+    
+        //5 DAY FORECAST
+        var fiveDayWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely,hourly,alerts&appid="+key;
+        fetch(fiveDayWeatherURL)
+            fetch(fiveDayWeatherURL)
+            .then(response => response.json())
+            .then(data =>  {
+                console.log(data);
+                var tempDisplayValue1 = parseInt((data['daily']['1']['temp']['day'])*9/5-459);
+                var tempDisplayValue2 = parseInt((data['daily']['2']['temp']['day'])*9/5-459);
+                var tempDisplayValue3 = parseInt((data['daily']['3']['temp']['day'])*9/5-459);
+                var tempDisplayValue4 = parseInt((data['daily']['4']['temp']['day'])*9/5-459);
+                var tempDisplayValue5 = parseInt((data['daily']['5']['temp']['day'])*9/5-459);
+        
+                var humidityDisplayValue1 = data['daily']['1']['humidity'];
+                var humidityDisplayValue2 = data['daily']['2']['humidity'];
+                var humidityDisplayValue3 = data['daily']['3']['humidity'];
+                var humidityDisplayValue4 = data['daily']['4']['humidity'];
+                var humidityDisplayValue5 = data['daily']['5']['humidity'];
+        
+                var iconDisplay1 = data['daily']['1']['weather']['0']['icon'];
+                var iconDisplay2 = data['daily']['2']['weather']['0']['icon'];
+                var iconDisplay3 = data['daily']['3']['weather']['0']['icon'];
+                var iconDisplay4 = data['daily']['4']['weather']['0']['icon'];
+                var iconDisplay5 = data['daily']['5']['weather']['0']['icon'];
+        
+                tempDisplay1.innerHTML = tempDisplayValue1+"°F";
+                tempDisplay2.innerHTML = tempDisplayValue2+"°F";
+                tempDisplay3.innerHTML = tempDisplayValue3+"°F";
+                tempDisplay4.innerHTML = tempDisplayValue4+"°F";
+                tempDisplay5.innerHTML = tempDisplayValue5+"°F";
+        
+                humidityDisplay1.innerHTML = humidityDisplayValue1+"%";
+                humidityDisplay2.innerHTML = humidityDisplayValue2+"%";
+                humidityDisplay3.innerHTML = humidityDisplayValue3+"%";
+                humidityDisplay4.innerHTML = humidityDisplayValue4+"%";
+                humidityDisplay5.innerHTML = humidityDisplayValue5+"%";
+        
+                $(".image1").attr("src","http://openweathermap.org/img/wn/"+iconDisplay1+"@2x.png");
+                $(".image2").attr("src","http://openweathermap.org/img/wn/"+iconDisplay2+"@2x.png");
+                $(".image3").attr("src","http://openweathermap.org/img/wn/"+iconDisplay3+"@2x.png");
+                $(".image4").attr("src","http://openweathermap.org/img/wn/"+iconDisplay4+"@2x.png");
+                $(".image5").attr("src","http://openweathermap.org/img/wn/"+iconDisplay5+"@2x.png");
+            })
 
-
-//5 DAY FORECAST
-var fiveDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityName+"&appid="+key;
-
-fetch(fiveDayWeatherURL)
-    .then(response => response.json())
-    .then(data =>  {
-        console.log(data);
-        var tempDisplayValue1 = parseInt((data['list']['6']['main']['temp'])*9/5-459);
-        var tempDisplayValue2 = parseInt((data['list']['14']['main']['temp'])*9/5-459);
-        var tempDisplayValue3 = parseInt((data['list']['22']['main']['temp'])*9/5-459);
-        var tempDisplayValue4 = parseInt((data['list']['30']['main']['temp'])*9/5-459);
-        var tempDisplayValue5 = parseInt((data['list']['38']['main']['temp'])*9/5-459);
-
-        var humidityDisplayValue1 = data['list']['6']['main']['humidity'];
-        var humidityDisplayValue2 = data['list']['14']['main']['humidity'];
-        var humidityDisplayValue3 = data['list']['22']['main']['humidity'];
-        var humidityDisplayValue4 = data['list']['30']['main']['humidity'];
-        var humidityDisplayValue5 = data['list']['38']['main']['humidity'];
-
-        var iconDisplay1 = data['list']['6']['weather']['0']['icon'];
-        var iconDisplay2 = data['list']['14']['weather']['0']['icon'];
-        var iconDisplay3 = data['list']['22']['weather']['0']['icon'];
-        var iconDisplay4 = data['list']['30']['weather']['0']['icon'];
-        var iconDisplay5 = data['list']['38']['weather']['0']['icon'];
-
-        tempDisplay1.innerHTML = tempDisplayValue1+"°F";
-        tempDisplay2.innerHTML = tempDisplayValue2+"°F";
-        tempDisplay3.innerHTML = tempDisplayValue3+"°F";
-        tempDisplay4.innerHTML = tempDisplayValue4+"°F";
-        tempDisplay5.innerHTML = tempDisplayValue5+"°F";
-
-        humidityDisplay1.innerHTML = humidityDisplayValue1+"%";
-        humidityDisplay2.innerHTML = humidityDisplayValue2+"%";
-        humidityDisplay3.innerHTML = humidityDisplayValue3+"%";
-        humidityDisplay4.innerHTML = humidityDisplayValue4+"%";
-        humidityDisplay5.innerHTML = humidityDisplayValue5+"%";
-
-        $(".image1").attr("src","http://openweathermap.org/img/wn/"+iconDisplay1+"@2x.png");
-        $(".image2").attr("src","http://openweathermap.org/img/wn/"+iconDisplay2+"@2x.png");
-        $(".image3").attr("src","http://openweathermap.org/img/wn/"+iconDisplay3+"@2x.png");
-        $(".image4").attr("src","http://openweathermap.org/img/wn/"+iconDisplay4+"@2x.png");
-        $(".image5").attr("src","http://openweathermap.org/img/wn/"+iconDisplay5+"@2x.png");
-    })
-
-
+        })
+        // .catch(err => alert("Invalid city entry, try again."))
  
-// .catch(err => alert("Invalid city entry, try again."))
+    
