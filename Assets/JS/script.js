@@ -190,6 +190,8 @@ fetch(weatherURL)
         tempDisplay0.innerHTML = tempDisplayValue0+"°F";
         humidityDisplay0.innerHTML = humidityDisplayValue0+"%";
         windDisplay0.innerHTML = windDisplayValue0+" m.p.h.";
+        // current weather icon
+        $(".image0").attr("src","http://openweathermap.org/img/wn/"+iconDisplay0+"@2x.png");
 
         // UV index 
         var uvURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely,hourly,daily,alerts&appid="+key;
@@ -212,8 +214,6 @@ fetch(weatherURL)
         } else { uvBox.setAttribute("style", "background-color: #B567A4;")
         }
         })
-        // current weather icon
-        $(".image0").attr("src","http://openweathermap.org/img/wn/"+iconDisplay0+"@2x.png");
     
         //5 DAY FORECAST
         var fiveDayWeatherURL = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely,hourly,alerts&appid="+key;
@@ -222,11 +222,11 @@ fetch(weatherURL)
             .then(response => response.json())
             .then(data =>  {
                 console.log(data);
-                var tempDisplayValue1 = parseInt((data['daily']['1']['temp']['day'])*9/5-459);
-                var tempDisplayValue2 = parseInt((data['daily']['2']['temp']['day'])*9/5-459);
-                var tempDisplayValue3 = parseInt((data['daily']['3']['temp']['day'])*9/5-459);
-                var tempDisplayValue4 = parseInt((data['daily']['4']['temp']['day'])*9/5-459);
-                var tempDisplayValue5 = parseInt((data['daily']['5']['temp']['day'])*9/5-459);
+                var tempDisplayValue1 = parseInt((data['daily']['1']['temp']['max'])*9/5-459);
+                var tempDisplayValue2 = parseInt((data['daily']['2']['temp']['max'])*9/5-459);
+                var tempDisplayValue3 = parseInt((data['daily']['3']['temp']['max'])*9/5-459);
+                var tempDisplayValue4 = parseInt((data['daily']['4']['temp']['max'])*9/5-459);
+                var tempDisplayValue5 = parseInt((data['daily']['5']['temp']['max'])*9/5-459);
         
                 var humidityDisplayValue1 = data['daily']['1']['humidity'];
                 var humidityDisplayValue2 = data['daily']['2']['humidity'];
