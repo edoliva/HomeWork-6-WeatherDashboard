@@ -1,6 +1,6 @@
 # WeatherDashboard
  
-## HW 6 Description
+## Description
 This webpage was created so a user could search for the weather by entering a city name. They will be presented with the current temp, humidity, wind speed, and uv index; as well as the weather for the next 5 days. 
  
 ## Table of Contents
