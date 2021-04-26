@@ -1,4 +1,4 @@
-# HomeWork-6-WeatherDashboard
+# WeatherDashboard
  
 ## HW 6 Description
 This webpage was created so a user could search for the weather by entering a city name. They will be presented with the current temp, humidity, wind speed, and uv index; as well as the weather for the next 5 days. 
@@ -11,7 +11,7 @@ This webpage was created so a user could search for the weather by entering a ci
 - [Credits](#credits)
 - [License](#license)
 ## Installation
-Clone or download this repository on GitHub then open "edoliva.github.io/HomeWork-6-WeatherDashboard" in a browser.  
+Clone or download this repository on GitHub then open "edoliva.github.io/WeatherDashboard" in a browser.  
 ## Criteria
 - The user must enter the name of a city to search. As more cities are searched, the names are rendered in the "Your searches" section. The previous 7 searches will be rendered.
 - If the user enters an invalid city name then no weather data will be displayed.
